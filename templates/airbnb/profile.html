@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h2>Your places </h2>
+<div class="row">
+    {% for flat in user_flats %}
+    <div class="col-md-4">
+        <div class="flat-card">
+            <img src="{{ flat.picture.url }}" alt="{{ flat.name }}">
+            <div class="flat-info">
+                <h3>{{ flat.name }}</h3>
+                <p>Owner: {{ flat.owner.user.first_name }}</p>
+                <p>Price per night: $100</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
