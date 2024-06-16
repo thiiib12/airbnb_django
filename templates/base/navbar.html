@@ -1,0 +1,16 @@
+{% load static %}
+
+<nav class="navbar">
+    <a href="#" class="navbar-brand">ThiBnB</a>
+    <div class="navbar-right">
+        <form class="search-form" action="#" method="get">
+            <input type="text" name="search" placeholder="Search...">
+            <button type="submit" class="btn-search">Submit</button>
+        </form>
+        <a href="#" class="btn-add-flat">+</a>
+        <div class="user-info">
+            <a href="#" class="user-login">Login</a>
+            <img src="{% static 'images/avatar_placeholder.jpg' %}" alt="User Avatar" class="user-avatar">
+        </div>
+    </div>
+</nav>

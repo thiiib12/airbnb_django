@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block content %} 
+<div class="d-flex justify-content-center py-3"></div>
+{% if not request.user.is_authenticated %}
+<h3>Join a community of 1000+ houses around Europe</h3>
+<form method="POST">
+  {% csrf_token %} {{ form.as_p }}
+  <button type="submit" class='btn btn-primary'>Login!</button>
+</form>
+
+<div class="container d-flex justify-content-center">
+    <p>No accounts yet?   <a href="{% url 'register'%}">Sign up</a></p>
+</div>
+
+
+{%else%}
+<h3 class ='mb-3'>Seems like you're already logged in</h3>
+<a href="{%url 'logout'%}" class="btn btn-primary">Logout</a>
+
+{% endif %}
+
+{% endblock %}

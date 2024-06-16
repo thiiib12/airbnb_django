@@ -1,0 +1,38 @@
+.flat-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.flat-card:hover {
+    transform: translateY(-5px);
+}
+
+.flat-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.flat-info {
+    padding: 15px;
+    flex: 1;
+}
+
+.flat-info h3 {
+    margin: 0 0 10px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.flat-info p {
+    margin: 5px 0;
+    font-size: 1em;
+    color: #555;
+}

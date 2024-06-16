@@ -15,8 +15,22 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from accounts.views import (
+    login_view, 
+    logout_view, 
+    register_view,
+)
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('', include('airbnb.urls')),
+    path('login/', login_view, name='loging'),
+    path('logout/', logout_view, name='logout'),
+    path('register/', register_view, name='register'),
+] #+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) ## Seems a bit ugly IMO, would need to ask for a refacto. Works without having to use it
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) ## no need the above commented line thanks to this 
