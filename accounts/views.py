@@ -4,10 +4,6 @@ from django.contrib.auth import authenticate, login, logout
 from crispy_forms.helper import FormHelper
 from .forms import CustomUserCreationForm
 from PIL import Image ## import to resize and avoid too large files
-import pdb
-
-
-# Create your views here.
 
 
 def login_view(request):
@@ -16,7 +12,7 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('/login/')
+            return redirect('airbnb:flat_list')
     else:
         form = AuthenticationForm(request)
 
@@ -27,19 +23,16 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('/login/')
+    return redirect('airbnb:flat_list')
 
-    # if request.method =='POST':
-    #     logout(request)
-    #     return redirect("/login/")
-    #return render(request, 'accounts/logout.html', {})
+
 
 def register_view(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return redirect('/login')
+            return redirect('airbnb:flat_list')
     else:
         form = CustomUserCreationForm()
 
@@ -48,10 +41,3 @@ def register_view(request):
 
     context = {'form': form, 'helper': helper}
     return render(request, 'accounts/register.html', context)
-
-
-# Comment it to put this logic in the save
-# def resize_image(image_path, output_size=(200,200)):
-#     with Image.open(image_path) as img:
-#         img.thumbnail(output_size)
-#         img.save(image_path)

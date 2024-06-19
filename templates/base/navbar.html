@@ -1,7 +1,7 @@
 {% load static %}
 
 <nav class="navbar">
-    <a href="{%url 'home' %}" class="navbar-brand">ThiBnB</a>
+    <a href="{%url 'airbnb:flat_list' %}" class="navbar-brand">ThiBnB</a>
     <div class="navbar-right">
         <form class="search-form" action="#" method="get">
             <input type="text" name="search" placeholder="Search...">
@@ -9,10 +9,14 @@
         </form>
         <a href="#" class="btn-add-flat">+</a>
         <div class="user-info">
-            <a href="{% url 'login' %}" class="user-login">Login</a>
-            <a href="{% url 'profile' %}">
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}" class="user-login">Logout</a>
+            <a href="{% url 'airbnb:profile' %}">
               <img src="{% static 'images/avatar_placeholder.jpg' %}" alt="User Avatar" class="user-avatar">
             </a>
+        {%else%}
+            <a href="{% url 'login' %}" class="user-login">Login</a>
+        {%endif%}
         </div>
     </div>
 </nav>

@@ -1,22 +1,23 @@
 {% extends "base.html" %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Profile{% endblock %}
 
 {% block content %}
-<h2>Your places </h2>
+<h2>Your Places</h2>
 <div class="row">
     {% for flat in user_flats %}
-    <div class="col-md-4">
-        <div class="flat-card">
-            <img src="{{ flat.picture.url }}" alt="{{ flat.name }}">
-            <div class="flat-info">
-                <h3>{{ flat.name }}</h3>
-                <p>Owner: {{ flat.owner.user.first_name }}</p>
-                <p>Price per night: $100</p>
-            </div>
+    <div class="col-md-12 flat-card">
+        <img src="{{ flat.picture.url }}" alt="{{ flat.name }}">
+        <div class="flat-info">
+            <h3>{{ flat.name }}</h3>
+            <p>{{ flat.description }}</p>
+            <p>Price per night: ${{ flat.price }}</p>
+            <a href="{% url 'airbnb:flat_edit' flat.id %}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'airbnb:flat_delete' flat.id %}" class="btn btn-danger">Delete</a>
         </div>
     </div>
     {% endfor %}
 </div>
+<a href="{% url 'airbnb:flat_create' %}" class="btn btn-success">Add New Flat</a>
 {% endblock %}
 
