@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% block title %}Profile{% endblock %}
 
 {% block content %}
@@ -10,14 +9,39 @@
         <img src="{{ flat.picture.url }}" alt="{{ flat.name }}">
         <div class="flat-info">
             <h3>{{ flat.name }}</h3>
-            <p>{{ flat.description }}</p>
+            <p>Owner: {{ flat.owner.user.first_name }}</p>
             <p>Price per night: ${{ flat.price }}</p>
-            <a href="{% url 'airbnb:flat_edit' flat.id %}" class="btn btn-primary">Edit</a>
-            <a href="{% url 'airbnb:flat_delete' flat.id %}" class="btn btn-danger">Delete</a>
+            <button class="btn btn-primary" hx-get="{% url 'airbnb:flat_edit' flat.id %}" hx-target="#flat-modal-content" hx-trigger="click">Edit</button>
+            <button class="btn btn-danger" hx-get="{% url 'airbnb:flat_delete' flat.id %}" hx-target="#flat-modal-content" hx-trigger="click">Delete</button>
         </div>
     </div>
     {% endfor %}
 </div>
-<a href="{% url 'airbnb:flat_create' %}" class="btn btn-success">Add New Flat</a>
+
+<button class="btn btn-success" hx-get="{% url 'airbnb:flat_create' %}" hx-target="#flat-modal-content" hx-trigger="click">Add New Flat</button>
+
+<!-- Modal -->
+<div class="modal fade" id="flat-modal" tabindex="-1" role="dialog" aria-labelledby="flatModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="flatModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="flat-modal-content">
+                <!-- HTMX will load content here -->
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
+<script>
+    document.addEventListener('htmx:afterSwap', (event) => {
+        if (event.detail.target.id === 'flat-modal-content') {
+            $('#flat-modal').modal('show');
+        }
+    });
+</script>

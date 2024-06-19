@@ -50,7 +50,7 @@ class ProfileView(LoginRequiredMixin, ListView):
 class FlatCreateView(LoginRequiredMixin, CreateView):
     model=Flat
     form_class = FlatForm 
-    template_name = 'airbnb/flat_form.html'
+    template_name = 'airbnb/flat_edit_modal.html'
     success_url = reverse_lazy('airbnb:profile')
 
     def get_context_data(self, **kwargs):
@@ -67,7 +67,7 @@ class FlatCreateView(LoginRequiredMixin, CreateView):
 class FlatUpdateView(LoginRequiredMixin, UpdateView, UserPassesTestMixin):
     model= Flat
     form_class = FlatForm
-    template_name = 'airbnb/flat_form.html'
+    template_name = 'airbnb/flat_edit_modal.html'
     success_url = reverse_lazy('airbnb:profile')
 
     def get_context_data(self, **kwargs):
@@ -81,7 +81,7 @@ class FlatUpdateView(LoginRequiredMixin, UpdateView, UserPassesTestMixin):
 
 class FlatDeleteView(LoginRequiredMixin, DeleteView, UserPassesTestMixin):
     model = Flat
-    template_name = 'airbnb/flat_confirm_delete.html'
+    template_name = 'airbnb/flat_delete_modal.html'
     success_url = reverse_lazy('airbnb:profile')
 
     def test_func(self):
