@@ -1,11 +1,13 @@
-from django.contrib.auth.decorators import login_required
+#from django.contrib.auth.decorators import login_required
 from django.db.models.query import QuerySet
-from django.shortcuts import render, get_object_or_404, redirect
+#from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Flat
 from .forms import FlatForm ## TODO
+from crispy_forms.helper import FormHelper
+
 
 
 # Create your views here.
@@ -49,7 +51,12 @@ class FlatCreateView(LoginRequiredMixin, CreateView):
     model=Flat
     form_class = FlatForm 
     template_name = 'airbnb/flat_form.html'
-    success_url = reverse_lazy('airbnb:profile.html')
+    success_url = reverse_lazy('airbnb:profile')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['helper'] = FormHelper()
+        return context
     
     def form_valid(self, form):
         form.instance.owner = self.request.user.userprofile
@@ -61,7 +68,12 @@ class FlatUpdateView(LoginRequiredMixin, UpdateView, UserPassesTestMixin):
     model= Flat
     form_class = FlatForm
     template_name = 'airbnb/flat_form.html'
-    success_url = reverse_lazy('airbnb:profile.html')
+    success_url = reverse_lazy('airbnb:profile')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['helper'] = FormHelper()
+        return context   
 
     def test_func(self):
         flat =self.get_object()
