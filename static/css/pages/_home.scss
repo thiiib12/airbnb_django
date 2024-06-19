@@ -1,0 +1,31 @@
+.flat-card {
+    height: 350px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.flat-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.flat-info {
+    padding: 15px;
+    background-color: #f8f8f8;
+    text-align: center;
+}
+
+.flat-info h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.flat-info p {
+    margin: 5px 0;
+}

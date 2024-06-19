@@ -1,0 +1,70 @@
+@import 'base/base';
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/variable';
+
+
+@import 'components/buttons';
+@import 'components/cards';
+@import 'components/forms';
+@import 'components/flat_card';
+@import 'components/navbar';
+@import 'components/profile-flat-card';
+
+
+@import 'pages/home';
+@import 'pages/flats.css';
+@import 'pages/profile.css';
+
+
+
+body {
+    font-family: Inter, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-md-4 {
+    width: 33.3333%;
+    padding: 15px;
+}
+
+// .flat-card {
+//     border: 1px solid #ddd;
+//     border-radius: 8px;
+//     overflow: hidden;
+//     height: 350px;
+//     display: flex;
+//     flex-direction: column;
+// }
+
+// .flat-card img {
+//     width: 100%;
+//     height: 200px;
+//     object-fit: cover;
+// }
+
+// .flat-info {
+//     padding: 15px;
+//     flex: 1;
+// }
+
+// .flat-info h3 {
+//     margin: 0 0 10px;
+//     font-size: 1.2em;
+// }
+
+// .flat-info p {
+//     margin: 5px 0;
+//     font-size: 1em;
+//     color: #555;
+// }

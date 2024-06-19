@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<h2>Your places</h2>
+<div class="profile-flats-container">
+    {% for flat in user_flats %}
+    <div class="profile-flat-card">
+        <img src="{{ flat.picture.url }}" alt="{{ flat.name }}">
+        <div class="profile-flat-info">
+            <h3>{{ flat.name }}</h3>
+            <p>Owner: {{ flat.owner.user.first_name }}</p>
+            <p>Price per night: ${{ flat.price }}</p>
+            <p>Description: {{ flat.description }}</p>
+            <div class="profile-flat-actions">
+                <a href="{% url 'airbnb:edit_flat' flat.id %}" class="btn btn-primary">Edit</a>
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal" data-flat-id="{{ flat.id }}">
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class="add-flat">
+    <a href="{% url 'airbnb:create_flat' %}" class="btn btn-success">Add a New Flat</a>
+</div>
+
+
+<!-- Confirmation Modal -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this flat?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteButton">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

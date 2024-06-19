@@ -1,0 +1,83 @@
+.navbar {
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+    padding: 10px 20px;
+    justify-content: space-between;
+    background-color: #59A5D8;
+    color: white;
+}
+
+.navbar a.navbar-brand {
+    color: inherit;
+    font-family: 'Bangers';
+    letter-spacing: 2px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.search-form {
+    display: flex;
+    margin-right: 20px;
+}
+
+.search-form input[type="text"] {
+    padding: 5px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    outline: none;
+}
+
+.search-form .btn-search {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    background-color: #fff;
+    color: #59A5D8;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-form .btn-search:hover {
+    background-color: #ddd;
+}
+
+.btn-add-flat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    color: #59A5D8;
+    border-radius: 50%;
+    font-size: 24px;
+    text-decoration: none;
+    margin-right: 20px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-add-flat:hover {
+    background-color: #ddd;
+    transform: scale(1.1);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-login {
+    margin-right: 10px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
