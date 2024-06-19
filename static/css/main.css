@@ -1,3 +1,4 @@
+@import 'base/_base.css';
 @import 'base/_reset.css';
 @import 'base/_typography.css';
 @import 'base/_variable.css';
@@ -5,6 +6,7 @@
 @import 'components/_buttons.css';
 @import 'components/_cards.css';
 @import 'components/_forms.css';
+@import 'components/_flat_card.css';
 
 @import 'layouts/_header.css';
 @import 'layouts/_footer.css';
@@ -13,8 +15,9 @@
 
 @import 'pages/_home.css';
 @import 'pages/_flats.css';
-@import url('../base/_base.css');
-@import url('../components/_flat_card.css');
+@import 'pages/_profile.css';
+
+
 
 
 

@@ -1,0 +1,15 @@
+{% load crispy_forms_tags %}
+
+<div class="modal-header">
+    <h5 class="modal-title">Edit Flat</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form method="post" hx-post="{% url 'airbnb:flat_edit' flat.id %}" hx-target="#flat-modal">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</div>
