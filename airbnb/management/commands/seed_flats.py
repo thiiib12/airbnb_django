@@ -6,6 +6,7 @@ from faker import Faker
 from accounts.models import UserProfile
 from airbnb.models import Flat
 from django.conf import settings
+import random
 
 # Nice flat names coming from ChatGPT
 FLAT_NAMES = [
@@ -59,6 +60,7 @@ class Command(BaseCommand):
             owner = UserProfile.objects.order_by("?").first()  # Randomly assign owner
             name = FLAT_NAMES[i]
             description = fake.text()
+            price = random.randrange(30,100,5)
 
             flat = Flat.objects.create(
                 owner=owner,
@@ -67,7 +69,8 @@ class Command(BaseCommand):
                 city=location["city"],
                 country=location["country"],
                 name=name,
-                description=description
+                description=description,
+                price = price
             )
 
             # Add picture to flat

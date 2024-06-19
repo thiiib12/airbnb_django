@@ -53,6 +53,10 @@ class Command(BaseCommand):
                     img = Image.open(f)
                     if img.mode == 'RGBA':
                         img = img.convert('RGB')
-                    profile.avatar.save(f'{username}.jpg', File(f), save=True)
+                    # Save the converted image to profile.avatar
+                    temp_path = os.path.join(media_avatar_path, f'{username}.jpg')
+                    img.save(temp_path, 'JPEG')
+                    with open(temp_path, 'rb') as temp_f:
+                        profile.avatar.save(f'{username}.jpg', File(temp_f), save=True)
 
         self.stdout.write(self.style.SUCCESS('Successfully seeded the database with 10 users.'))
